@@ -1,4 +1,5 @@
 import { IsNotEmpty, Length } from 'class-validator';
+import { _Role } from 'src/modules/role/role.entity';
 
 export class CreatePermissionDto {
   id?: number;
@@ -10,4 +11,6 @@ export class CreatePermissionDto {
   @IsNotEmpty({ message: 'requered description' })
   @Length(3, 1500)
   desc: string;
+
+  roles?: _Role[];
 }

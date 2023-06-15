@@ -1,4 +1,6 @@
 import { IsNotEmpty, Length } from 'class-validator';
+import { _Module } from 'src/modules/module/module.entity';
+import { _User } from 'src/modules/user/user.entity';
 
 export class CreateFormationDto {
   id?: number;
@@ -9,4 +11,8 @@ export class CreateFormationDto {
 
   @IsNotEmpty({ message: 'requered coach' })
   coach_id: number;
+
+  users?: _User[];
+
+  modules?: _Module[];
 }

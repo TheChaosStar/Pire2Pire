@@ -1,4 +1,6 @@
 import { IsNotEmpty, Length } from 'class-validator';
+import { _Formation } from 'src/modules/formation/formation.entity';
+import { _Lesson } from 'src/modules/lesson/lesson.entity';
 
 export class CreateUserDto {
   id?: number;
@@ -16,4 +18,8 @@ export class CreateUserDto {
   password: string;
 
   role_id?: number;
+
+  formations?: _Formation[];
+
+  lessons?: _Lesson[];
 }

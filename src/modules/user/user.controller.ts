@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Param,
   Post,
+  Put,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -30,5 +32,15 @@ export class UserController {
   @UsePipes(ValidationPipe)
   async createUser(@Body() userData: CreateUserDto) {
     return await this.userService.createNewUser(userData);
+  }
+
+  @Delete('/:id')
+  async remove(@Param('id') id?: string): Promise<any> {
+    await this.userService.remove(parseInt(id));
+  }
+
+  @Put('/:id')
+  update(@Param('id') id: string, @Body() createNewUserDto: CreateUserDto) {
+    this.userService.update(Number(id), createNewUserDto);
   }
 }
