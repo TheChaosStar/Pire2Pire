@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
-import { Module } from './module.entity';
+import { _Module } from './module.entity';
 import { CreateModuleDto } from 'src/dto/createModule.dto';
 
 @Injectable()
-export class ModuleRepository extends Repository<Module> {
+export class ModuleRepository extends Repository<_Module> {
   constructor(private dataSource: DataSource) {
-    super(Module, dataSource.createEntityManager());
+    super(_Module, dataSource.createEntityManager());
   }
 
-  async createModule({ name }: CreateModuleDto): Promise<Module> {
+  async createModule({ name }: CreateModuleDto): Promise<_Module> {
     const task = this.create({
       name,
     });

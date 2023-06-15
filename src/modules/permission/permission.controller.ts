@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -16,6 +17,11 @@ export class PermissionController {
   @Get('/')
   getAllPermission() {
     return this.permissionService.getAllPermission();
+  }
+
+  @Get('/:id')
+  getPermissionById(@Param('id') id?: string): Promise<any> {
+    return this.permissionService.getPermissionById(Number(id));
   }
 
   @Post('/create')

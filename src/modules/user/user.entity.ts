@@ -6,11 +6,11 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Formation } from '../formation/formation.entity';
-import { Lesson } from '../lesson/lesson.entity';
+import { _Formation } from '../formation/formation.entity';
+import { _Lesson } from '../lesson/lesson.entity';
 
 @Entity('users')
-export class User extends BaseEntity {
+export class _User extends BaseEntity {
   @PrimaryGeneratedColumn({
     comment: 'The user unique identifier',
   })
@@ -34,7 +34,7 @@ export class User extends BaseEntity {
 
   role_id: number;
 
-  @ManyToMany(() => Formation, (formation) => formation.users, {
+  @ManyToMany(() => _Formation, (formation) => formation.users, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
@@ -49,9 +49,9 @@ export class User extends BaseEntity {
       referencedColumnName: 'id',
     },
   })
-  formations?: Formation[];
+  formations?: _Formation[];
 
-  @ManyToMany(() => Lesson, (lesson) => lesson.users, {
+  @ManyToMany(() => _Lesson, (lesson) => lesson.users, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
@@ -66,5 +66,5 @@ export class User extends BaseEntity {
       referencedColumnName: 'id',
     },
   })
-  lessons?: Lesson[];
+  lessons?: _Lesson[];
 }

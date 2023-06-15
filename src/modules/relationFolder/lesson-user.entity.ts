@@ -1,6 +1,6 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
-import { Lesson } from '../lesson/lesson.entity';
-import { User } from '../user/user.entity';
+import { _Lesson } from '../lesson/lesson.entity';
+import { _User } from '../user/user.entity';
 
 @Entity('lesson-user')
 export class ModuleUser {
@@ -10,17 +10,17 @@ export class ModuleUser {
   @PrimaryColumn({ name: 'user_id' })
   userId: number;
 
-  @ManyToOne(() => Lesson, (lesson) => lesson.users, {
+  @ManyToOne(() => _Lesson, (lesson) => lesson.users, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
   @JoinColumn([{ name: 'lesson_id', referencedColumnName: 'id' }])
-  lessons: Lesson[];
+  lessons: _Lesson[];
 
-  @ManyToOne(() => User, (user) => user.lessons, {
+  @ManyToOne(() => _User, (user) => user.lessons, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
-  users: Lesson[];
+  users: _Lesson[];
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from './user.repository';
 import { CreateUserDto } from 'src/dto/createUser.dto';
-import { User } from './user.entity';
+import { _User } from './user.entity';
 
 @Injectable()
 export class UserService {
@@ -23,7 +23,7 @@ export class UserService {
     return newUser;
   }
 
-  async getUserById(id: number): Promise<User> {
+  async getUserById(id: number): Promise<_User> {
     return await this.userRepository.findOneBy({ id: id });
   }
 

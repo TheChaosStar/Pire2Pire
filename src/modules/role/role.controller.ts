@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -16,6 +17,11 @@ export class RoleController {
   @Get('/')
   getAllRole() {
     return this.roleService.getAllRole();
+  }
+
+  @Get('/:id')
+  getRoleById(@Param('id') id?: string): Promise<any> {
+    return this.roleService.getRoleById(Number(id));
   }
 
   @Post('/create')

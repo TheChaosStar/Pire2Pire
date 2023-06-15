@@ -1,7 +1,14 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { _Role } from '../role/role.entity';
 
 @Entity('permission')
-export class Permission extends BaseEntity {
+export class _Permission extends BaseEntity {
   @PrimaryGeneratedColumn({
     comment: 'The permission unique identifier',
   })
@@ -16,4 +23,10 @@ export class Permission extends BaseEntity {
     type: 'varchar',
   })
   desc: string;
+
+  @ManyToMany(() => _Role, (role) => role.permissions, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  roles: _Role[];
 }

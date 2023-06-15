@@ -1,18 +1,18 @@
 import { DataSource, Repository } from 'typeorm';
-import { Formation } from './formation.entity';
+import { _Formation } from './formation.entity';
 import { Injectable } from '@nestjs/common';
 import { CreateFormationDto } from 'src/dto/createFormation.dto';
 
 @Injectable()
-export class FormationRepository extends Repository<Formation> {
+export class FormationRepository extends Repository<_Formation> {
   constructor(private dataSource: DataSource) {
-    super(Formation, dataSource.createEntityManager());
+    super(_Formation, dataSource.createEntityManager());
   }
 
   async createFormation({
     name,
     coach_id,
-  }: CreateFormationDto): Promise<Formation> {
+  }: CreateFormationDto): Promise<_Formation> {
     const task = this.create({
       name,
       coach_id,

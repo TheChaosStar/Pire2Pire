@@ -6,11 +6,11 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Formation } from '../../formation/formation.entity';
-import { Lesson } from '../lesson.entity';
+import { _Formation } from '../formation/formation.entity';
+import { _Lesson } from '../lesson/lesson.entity';
 
 @Entity('modules')
-export class Module extends BaseEntity {
+export class _Module extends BaseEntity {
   @PrimaryGeneratedColumn({
     comment: 'The module unique identifier',
   })
@@ -21,7 +21,7 @@ export class Module extends BaseEntity {
   })
   name: string;
 
-  @ManyToMany(() => Formation, (formation) => formation.modules, {
+  @ManyToMany(() => _Formation, (formation) => formation.modules, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
@@ -36,11 +36,11 @@ export class Module extends BaseEntity {
       referencedColumnName: 'id',
     },
   })
-  formations?: Formation[];
+  formations?: _Formation[];
 
-  @ManyToMany(() => Lesson, (lesson) => lesson.modules, {
+  @ManyToMany(() => _Lesson, (lesson) => lesson.modules, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
-  lessons?: Lesson[];
+  lessons?: _Lesson[];
 }

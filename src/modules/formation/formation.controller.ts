@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -18,15 +19,15 @@ export class FormationController {
     return this.formationService.getAllFormation();
   }
 
+  @Get('/:id')
+  getFormationById(@Param('id') id?: string): Promise<any> {
+    return this.formationService.getFormationById(Number(id));
+  }
+
   @Post('/create')
   @HttpCode(200)
   @UsePipes(ValidationPipe)
   async createFormation(@Body() formationData: CreateFormationDto) {
-    // const formation = await this.userService.getUserById();
-    // console.log('====================================');
-    // console.log(formation);
-    // console.log('====================================');
-
     return await this.formationService.createNewFormation(formationData);
   }
 }

@@ -6,11 +6,11 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from '../user/user.entity';
-import { Module } from '../lesson/module/module.entity';
+import { _User } from '../user/user.entity';
+import { _Module } from '../module/module.entity';
 
 @Entity('formations')
-export class Formation extends BaseEntity {
+export class _Formation extends BaseEntity {
   @PrimaryGeneratedColumn({
     comment: 'The formation unique identifier',
   })
@@ -21,18 +21,18 @@ export class Formation extends BaseEntity {
   })
   name: string;
 
-  @OneToOne(() => User, (user) => user.id)
+  @OneToOne(() => _User, (user) => user.id)
   coach_id: number;
 
-  @ManyToMany(() => User, (user) => user.formations, {
+  @ManyToMany(() => _User, (user) => user.formations, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
-  users?: User[];
+  users?: _User[];
 
-  @ManyToMany(() => Module, (module) => module.formations, {
+  @ManyToMany(() => _Module, (module) => module.formations, {
     onDelete: 'NO ACTION',
     onUpdate: 'NO ACTION',
   })
-  modules?: Module[];
+  modules?: _Module[];
 }

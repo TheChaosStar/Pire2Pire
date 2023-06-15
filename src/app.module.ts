@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 import { typeOrmConfig } from './config/typeorm.config';
 import { FormationModule } from './modules/formation/formation.module';
 import { UserModule } from './modules/user/user.module';
-import { ModuleModule } from './modules/lesson/module/module.module';
+import { ModuleModule } from './modules/module/module.module';
 import { LessonModule } from './modules/lesson/lesson.module';
 import { RoleModule } from './modules/role/role.module';
 import { PermissionModule } from './modules/permission/permission.module';

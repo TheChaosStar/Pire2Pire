@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ModuleRepository } from './module.repository';
+import { _Module } from './module.entity';
+import { CreateModuleDto } from 'src/dto/createModule.dto';
 
 @Injectable()
 export class ModuleService {
@@ -11,5 +13,13 @@ export class ModuleService {
 
   async getAllModule() {
     return await this.moduleRepository.find();
+  }
+
+  async getModuleById(id: number): Promise<_Module> {
+    return await this.moduleRepository.findOneBy({ id: id });
+  }
+
+  async createModule(module: CreateModuleDto) {
+    return await this.moduleRepository.createModule(module);
   }
 }

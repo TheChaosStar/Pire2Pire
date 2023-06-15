@@ -1,18 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../user/user.entity';
+import { _User } from '../../user/user.entity';
 import { Repository } from 'typeorm';
 import { Promise as Bluebird } from 'bluebird';
+import { Seeder } from '../seeder';
 
 @Injectable()
-export class UsersSeeder {
+export class UsersSeeder extends Seeder {
   constructor(
-    @InjectRepository(User)
-    private readonly users: Repository<User>,
-  ) {}
+    @InjectRepository(_User)
+    private readonly users: Repository<_User>,
+  ) {
+    super();
+  }
 
   async seed() {
-    const data: Partial<User>[] = [];
+    const data: Partial<_User>[] = [];
 
     for (let i = 0; i < 10; i++) {
       data.push({
