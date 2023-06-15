@@ -12,24 +12,19 @@ export class UserService {
 
   async getAllUser() {
     const users = await this.userRepository.find();
-
-    console.log('====================================');
-    console.log(users);
-    console.log('====================================');
-
-    return users;
+    const newUser = [];
+    users.forEach((user) => {
+      newUser.push({
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+      });
+    });
+    return newUser;
   }
 
   async getUserById(id: number): Promise<User> {
-    const user = await this.userRepository.query(
-      'SELECT * FROM "users" WHERE id = ' + id,
-    );
-
-    console.log('====================================');
-    console.log(user);
-    console.log('====================================');
-
-    return user;
+    return await this.userRepository.findOneBy({ id: id });
   }
 
   async createNewUser(user: CreateUserDto) {

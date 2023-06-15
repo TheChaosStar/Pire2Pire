@@ -21,7 +21,7 @@ export class UserController {
   }
 
   @Get('/:id')
-  getUserById(@Param('id') id?: string): Promise<User> {
+  getUserById(@Param('id') id?: string): Promise<any> {
     return this.userService.getUserById(Number(id));
   }
 

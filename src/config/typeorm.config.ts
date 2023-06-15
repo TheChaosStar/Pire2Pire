@@ -11,3 +11,8 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   autoLoadEntities: true,
   synchronize: true,
 };
+
+export const seedOrmConfig: TypeOrmModuleOptions = {
+  ...typeOrmConfig,
+  logging: ['error', 'warn'],
+};
