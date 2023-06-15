@@ -27,7 +27,7 @@ export class UsersSeeder extends Seeder {
 
     await Bluebird.each(data, async (data) => {
       const user = this.users.create(data);
-      await this.users.save(user);
+      await this.users.insert(user);
     });
   }
 }
