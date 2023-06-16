@@ -12,5 +12,5 @@ connection with **typeORM** [<img width=50 alt="typeORM logo" src="https://githu
 
 ## Contact
 
-Donovan Caron - [email](Caron.donovan1@outlook.fr)
+Donovan Caron - [email](Caron.donovan1@outlook.fr)\
 Project Link: [https://github.com/TheChaosStar/Pire2Pire](https://github.com/TheChaosStar/Pire2Pire)
