@@ -4,8 +4,8 @@
 
 
 
-project using [NestJS](https://github.com/nestjs/nest) [<img width=16 alt="NestJs logo" src="https://d33wubrfki0l68.cloudfront.net/e937e774cbbe23635999615ad5d7732decad182a/26072/logo-small.ede75a6b.svg">](https://nestjs.com/)\
-database under [Prostgresql](https://www.postgresql.org/)\
+project using ***NestJS*** [<img width=16 alt="NestJs logo" src="https://d33wubrfki0l68.cloudfront.net/e937e774cbbe23635999615ad5d7732decad182a/26072/logo-small.ede75a6b.svg">](https://nestjs.com/)\
+database under **Prostgresql** [<img width=16 alt="NestJs logo" src="https://www.postgresql.org/media/img/about/press/elephant.png">](https://www.postgresql.org/)\
 connection with [typeORM](https://typeorm.io/)
 
 ## Contact
