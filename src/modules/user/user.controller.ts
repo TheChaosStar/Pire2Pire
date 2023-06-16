@@ -13,10 +13,18 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from '../../dto/createUser.dto';
 import { _User } from './user.entity';
+import { LoginUserDto } from 'src/dto/LoginUser.dto';
+import { Observable } from 'rxjs';
 
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
+  @Post('login')
+  @HttpCode(200)
+  login(@Body() loginUserDto: LoginUserDto): Observable<string> {
+    return this.userService.login(loginUserDto);
+  }
+
   @Get('/')
   getAllUser() {
     return this.userService.getAllUser();
@@ -27,15 +35,15 @@ export class UserController {
     return this.userService.getUserById(Number(id));
   }
 
-  @Post('/create')
+  @Post('/')
   @HttpCode(200)
   @UsePipes(ValidationPipe)
-  async createUser(@Body() userData: CreateUserDto) {
-    return await this.userService.createNewUser(userData);
+  async create(@Body() userData: CreateUserDto) {
+    return await this.userService.create(userData);
   }
 
   @Delete('/:id')
-  async remove(@Param('id') id?: string): Promise<any> {
+  async remove(@Param('id') id: string): Promise<any> {
     await this.userService.remove(parseInt(id));
   }
 
